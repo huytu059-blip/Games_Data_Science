@@ -1,20 +1,25 @@
-# Data Science Project
+# Games Data Science
 
-This repository provides a starter structure for a data science workflow.
+A Python and Jupyter project for data quality review, exploratory analysis, and model evaluation.
 
-## Project folders
-- docs/: project documentation
-- notebooks/: analysis notebooks
-- src/: reusable Python modules
-- scripts/: pipeline and execution scripts
-- reports/: reports, figures, and tables
-- dashboard/: interactive dashboard app
-- models/: saved models and artifacts
-- tests/: unit tests
-- presentation/: slide outline and deck material
+## Project structure
+
+- `data/raw/`: source datasets; keep `games.csv` unchanged.
+- `data/processed/`: reduced and processed datasets.
+- `notebooks/`: ordered analysis notebooks; `notebooks/archive/` keeps alternate and historical versions.
+- `src/`: reusable data, feature, model, evaluation, and visualization code.
+- `scripts/`: script entry points.
+- `tests/`: unit tests.
+- `docs/`: data dictionary and project documentation.
+- `reports/`: reports, figures, and tables.
+- `models/`: trained model artifacts when available.
+- `dashboard/`: dashboard application.
+- `presentation/`: presentation outline.
 
 ## Quick start
-1. Install dependencies:
-   pip install -r requirements.txt
-2. Add raw data to the data/ folder.
-3. Start with notebooks/01_data_quality.ipynb
+
+1. Install the listed dependencies with `pip install -r requirements.txt`.
+2. Start Jupyter from the `notebooks/` directory so relative data paths resolve.
+3. Open `00_reduce_raw.ipynb`, then continue with `01_data_quality.ipynb` and the following numbered notebooks.
+
+The reduction notebook writes `data/processed/games_reduced.csv`; running it again replaces that processed output.

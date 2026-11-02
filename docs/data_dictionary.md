@@ -1,3 +1,6 @@
+# Data Dictionary
+
+```python
 steam_columns_dict = {
     "AppID": {
         "vietnamese_name": "Mã định danh game (App ID)",
@@ -197,3 +200,4 @@ steam_columns_dict = {
         "data_type": "str"
     }
 }
+```
