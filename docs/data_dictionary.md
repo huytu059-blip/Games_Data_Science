@@ -1,10 +1,13 @@
+# Data Dictionary
+
+```python
 steam_columns_dict = {
     "AppID": {
         "vietnamese_name": "Mã định danh game (App ID)",
         "meaning": "Mã số định danh độc nhất của mỗi trò chơi trên hệ thống Steam.",
         "data_type": "int64 / str"
     },
-    "Name": {
+    "Name": {  
         "vietnamese_name": "Tên trò chơi",
         "meaning": "Tên chính thức của tựa game trên Steam.",
         "data_type": "str"
@@ -34,9 +37,17 @@ steam_columns_dict = {
         "meaning": "Giá bán hiện tại của trò chơi (tính bằng USD hoặc đơn vị tiền tệ gốc).",
         "data_type": "float64"
     },
-    "DiscountDLC count": {
-        "vietnamese_name": "Số lượng DLC đang giảm giá",
-        "meaning": "Số lượng các gói nội dung bổ sung (DLC) đang trong chương trình khuyến mãi.",
+    # LƯU Ý: trong file gốc, tên cột "DiscountDLC count" thật ra là 2 cột bị dính vào nhau
+    # ("Discount" và "DLC count"). Header chỉ có 39 tên nhưng mỗi dòng có 40 giá trị,
+    # nên khi đọc file gốc phải tách thành 2 tên cột (xem notebook 00_reduce_raw).
+    "Discount": {
+        "vietnamese_name": "Mức giảm giá",
+        "meaning": "Phần trăm giảm giá hiện tại của trò chơi (0-100).",
+        "data_type": "int64"
+    },
+    "DLC count": {
+        "vietnamese_name": "Số lượng DLC",
+        "meaning": "Số gói nội dung tải thêm (DLC) của trò chơi.",
         "data_type": "int64"
     },
 
@@ -197,3 +208,39 @@ steam_columns_dict = {
         "data_type": "str"
     }
 }
+```
+
+## Bộ dữ liệu dùng để phân tích
+
+Hai file trong `data/processed/` có cùng 21 cột. `games_reduced.csv` được tạo ở notebook `00_reduce_raw`, giữ nguyên mọi dòng của file gốc. `games_cleaned.csv` được tạo ở notebook `01_data_quality` sau khi làm sạch.
+
+| Cột | Ý nghĩa | Kiểu dữ liệu | Ghi chú sau khi làm sạch |
+|---|---|---|---|
+| id | Mã game trên Steam | int64 | Đổi tên từ `AppID` ở notebook 00 |
+| Name | Tên game | str | Gộp khoảng trắng thừa; 1 tên thiếu được điền "Unknown" |
+| Release date | Ngày phát hành | datetime | Đổi từ chuỗi "Jul 29, 2016" sang ngày tháng |
+| Estimated owners | Khoảng số người sở hữu ước tính | str | Dạng "min - max"; "0 - 0" được giữ nguyên (game chưa có người dùng) |
+| Peak CCU | Số người chơi đồng thời cao nhất | int64 | |
+| Price | Giá bán hiện tại (USD) | float64 | |
+| Discount | Mức giảm giá (%) | int64 | Game giá 0 có giảm giá 1-99% được đặt về 0 |
+| DLC count | Số DLC | int64 | |
+| Positive | Số đánh giá tích cực | int64 | |
+| Negative | Số đánh giá tiêu cực | int64 | |
+| User score | Điểm người dùng (1-100) | float64 | 0 được đổi thành trống (NaN) vì 0 = chưa có điểm; chỉ 40 game có điểm |
+| Metacritic score | Điểm Metacritic (1-100) | float64 | 0 được đổi thành trống (NaN) vì 0 = chưa có điểm |
+| Recommendations | Số lượt đề xuất | int64 | Steam chỉ hiện khi có trên 100 lượt, nên giá trị khác 0 nhỏ nhất là 101 |
+| Achievements | Số thành tựu | int64 | |
+| Average playtime forever | Thời gian chơi trung bình từ trước đến nay (phút) | int64 | |
+| Average playtime two weeks | Thời gian chơi trung bình 2 tuần gần nhất (phút) | int64 | |
+| Median playtime forever | Thời gian chơi trung vị từ trước đến nay (phút) | int64 | |
+| Median playtime two weeks | Thời gian chơi trung vị 2 tuần gần nhất (phút) | int64 | |
+| Categories | Danh sách tính năng, cách nhau bởi dấu phẩy | str | Bỏ nhãn lặp; giá trị thiếu để trống |
+| Genres | Danh sách thể loại, cách nhau bởi dấu phẩy | str | Giá trị thiếu để trống |
+| Tags | Danh sách thẻ do người chơi gắn, cách nhau bởi dấu phẩy | str | Giá trị thiếu để trống (thiếu vì game chưa có đánh giá) |
+
+Các chỉ số tính thêm khi phân tích (notebook `02_eda`, không lưu trong file):
+
+- **Owners_mid**: điểm giữa của khoảng `Estimated owners`.
+- **Total reviews** = Positive + Negative.
+- **Positive ratio** = Positive / Total reviews × 100, chỉ tính cho game có từ 10 đánh giá.
+- **Nhóm giá**: Miễn phí (0), Thấp (dưới 5 USD), Trung bình (5 đến dưới 15 USD), Cao (từ 15 USD).
