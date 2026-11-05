@@ -70,6 +70,8 @@ Bảng 1.3. Các nội dung thay đổi so với báo cáo giữa kỳ
 
 Nguồn: nhóm tổng hợp.
 
+Ngoài ra, báo cáo giữa kỳ dự kiến làm thêm một dashboard. Đến cuối kỳ, nhóm quyết định không làm sản phẩm này để dồn thời gian cho năm câu hỏi nghiên cứu và phần mô hình. Các biểu đồ và bảng kết quả được trình bày trong notebook và báo cáo.
+
 # CHƯƠNG 2. DỮ LIỆU VÀ QUÁ TRÌNH RÚT GỌN DỮ LIỆU
 
 ## 2.1. Nguồn và đặc điểm dữ liệu ban đầu
@@ -292,7 +294,7 @@ Hình 4.1 cho thấy phân phối giá lệch phải rất mạnh. Nhóm miễn 
 
 Nguồn: notebook 02_eda.ipynb, mục 2.3.3.
 
-Số đánh giá tích cực và tiêu cực có hệ số 0,85; hai chỉ số này cùng có hệ số 0,58 với số người sở hữu. Số lượt đề xuất có tương quan 0,73 với thời gian chơi trung bình và 0,61 với Peak CCU. Giá bán chỉ tương quan yếu với các biến khác, với hệ số từ -0,07 đến 0,23.
+Hình 4.2 cho thấy số đánh giá tích cực và tiêu cực có hệ số 0,85; hai chỉ số này cùng có hệ số 0,58 với số người sở hữu. Số lượt đề xuất có tương quan 0,73 với thời gian chơi trung bình và 0,61 với Peak CCU. Giá bán chỉ tương quan yếu với các biến khác, với hệ số từ -0,07 đến 0,23.
 
 Tương quan rất cao giữa số đánh giá tích cực và tiêu cực cho thấy số lượng đánh giá chủ yếu phản ánh quy mô của trò chơi chứ không phản ánh chất lượng. Vì vậy, để đo mức độ đánh giá, nhóm sử dụng tỷ lệ đánh giá tích cực thay vì số lượng đánh giá tuyệt đối.
 
@@ -314,7 +316,7 @@ Sự khác biệt này có thể giải thích bởi đặc điểm của dữ l
 
 Nguồn: notebook 02_eda.ipynb, mục 2.3.4.
 
-Peak CCU trung vị tăng dần theo số lượt đề xuất: từ 0–2 ở các nhóm dưới 1.000 lượt, lên 9 ở nhóm 1.001–5.000, 44 ở nhóm 5.001–10.000, 181 ở nhóm 10.001–50.000, 756 ở nhóm 50.001–100.000 và 4.004 ở nhóm trên 100.000 lượt. Các nhóm cuối chỉ gồm số ít trò chơi: nhóm trên 100.000 lượt có 192 trò chơi, trong khi hai nhóm dưới 500 lượt có 11.266 trò chơi, khoảng 55% số trò chơi có lượt đề xuất. Kết quả cho thấy mức độ phổ biến tập trung vào một nhóm nhỏ trò chơi rất nổi tiếng.
+Peak CCU trung vị tăng dần theo số lượt đề xuất (Hình 4.4): từ 0–2 ở các nhóm dưới 1.000 lượt, lên 9 ở nhóm 1.001–5.000, 44 ở nhóm 5.001–10.000, 181 ở nhóm 10.001–50.000, 756 ở nhóm 50.001–100.000 và 4.004 ở nhóm trên 100.000 lượt. Các nhóm cuối chỉ gồm số ít trò chơi: nhóm trên 100.000 lượt có 192 trò chơi, trong khi hai nhóm dưới 500 lượt có 11.266 trò chơi, khoảng 55% số trò chơi có lượt đề xuất. Kết quả cho thấy mức độ phổ biến tập trung vào một nhóm nhỏ trò chơi rất nổi tiếng.
 
 ### 4.3.3. Mức độ phổ biến theo thể loại
 
@@ -338,7 +340,7 @@ Vì User score chỉ có ở 40 trò chơi, nhóm sử dụng Positive ratio là
 
 Nguồn: notebook 02_eda.ipynb, mục 2.4.3.
 
-Trong 56.662 trò chơi có từ 10 đánh giá, tỷ lệ đánh giá tích cực trung bình là 77,2% và trung vị là 81,2%. Phân phối lệch trái: 25% trò chơi có trên 91,0%, trong khi chỉ 10% có dưới 51,9%. Như vậy, phần lớn trò chơi được người chơi đánh giá tốt, nên khi so sánh giữa các nhóm, những chênh lệch vài điểm phần trăm đã có ý nghĩa nhất định.
+Trong 56.662 trò chơi có từ 10 đánh giá, tỷ lệ đánh giá tích cực trung bình là 77,2% và trung vị là 81,2%. Phân phối lệch trái (Hình 4.6): 25% trò chơi có trên 91,0%, trong khi chỉ 10% có dưới 51,9%. Như vậy, phần lớn trò chơi được người chơi đánh giá tốt, nên khi so sánh giữa các nhóm, những chênh lệch vài điểm phần trăm đã có ý nghĩa nhất định.
 
 ### 4.4.2. Đánh giá của người chơi so với điểm Metacritic
 
@@ -354,7 +356,7 @@ Chỉ có 4.145 trò chơi vừa có điểm Metacritic vừa có từ 10 đánh
 
 Nguồn: notebook 02_eda.ipynb, mục 2.4.5.
 
-Hầu hết thể loại có tỷ lệ tích cực trung vị gần nhau, từ 75,2% đến 82,4%, trong đó Casual (82,4%), Indie (81,8%) và Adventure (81,2%) cao nhất. Massively Multiplayer là ngoại lệ rõ rệt với 66,7%. Kết hợp với RQ1, Massively Multiplayer thuộc nhóm phổ biến nhất nhưng có tỷ lệ đánh giá tích cực thấp nhất, trong khi Casual và Indie có tỷ lệ phổ biến thấp nhưng được đánh giá tốt.
+Hầu hết thể loại có tỷ lệ tích cực trung vị gần nhau, từ 75,2% đến 82,4% (Hình 4.8), trong đó Casual (82,4%), Indie (81,8%) và Adventure (81,2%) cao nhất. Massively Multiplayer là ngoại lệ rõ rệt với 66,7%. Kết hợp với RQ1, Massively Multiplayer thuộc nhóm phổ biến nhất nhưng có tỷ lệ đánh giá tích cực thấp nhất, trong khi Casual và Indie có tỷ lệ phổ biến thấp nhưng được đánh giá tốt.
 
 ### 4.4.4. Tỷ lệ đánh giá tích cực theo tính năng
 
@@ -386,7 +388,7 @@ Thời gian chơi được đo bằng Median playtime forever, đơn vị phút.
 
 Nguồn: notebook 02b_eda_rq3_rq4.ipynb, mục 2b.3.
 
-Trên toàn bộ lịch sử chơi, RPG cao nhất (266 phút), tiếp theo là Strategy (253 phút) và Simulation (224 phút); Racing thấp nhất (157 phút). Trong hai tuần gần nhất, Massively Multiplayer cao nhất (224 phút) dù chỉ xếp thứ 9 trên toàn bộ lịch sử, còn RPG và Strategy vẫn đứng thứ 2 và 3. Tương quan thứ hạng giữa hai cột là 0,52. Câu trả lời cho câu hỏi phụ là: RPG có thời gian chơi trung vị cao nhất, và xu hướng giữa hai cột chỉ giống nhau một phần. Cột hai tuần chỉ có 3.948 trò chơi và chỉ gồm trò chơi vẫn còn người chơi, nên hai cột không so sánh trên cùng một nhóm.
+Trên toàn bộ lịch sử chơi (Hình 4.9), RPG cao nhất (266 phút), tiếp theo là Strategy (253 phút) và Simulation (224 phút); Racing thấp nhất (157 phút). Trong hai tuần gần nhất, Massively Multiplayer cao nhất (224 phút) dù chỉ xếp thứ 9 trên toàn bộ lịch sử, còn RPG và Strategy vẫn đứng thứ 2 và 3. Tương quan thứ hạng giữa hai cột là 0,52. Câu trả lời cho câu hỏi phụ là: RPG có thời gian chơi trung vị cao nhất, và xu hướng giữa hai cột chỉ giống nhau một phần. Cột hai tuần chỉ có 3.948 trò chơi và chỉ gồm trò chơi vẫn còn người chơi, nên hai cột không so sánh trên cùng một nhóm.
 
 ### 4.5.2. Thời gian chơi theo giá và tính năng
 
@@ -394,7 +396,7 @@ Trên toàn bộ lịch sử chơi, RPG cao nhất (266 phút), tiếp theo là 
 
 Nguồn: notebook 02b_eda_rq3_rq4.ipynb, mục 2b.4.
 
-Giá càng cao thì thời gian chơi càng dài: 92 phút ở nhóm miễn phí, 184 phút ở nhóm thấp, 259 phút ở nhóm trung bình và 470,5 phút ở nhóm cao. Steam Cloud có chênh lệch lớn nhất giữa trò chơi có và không có tính năng (+82 phút). Multi-player và Online PvP gần như không khác biệt (−6 và −3 phút). Thời gian chơi liên hệ cùng chiều với Peak CCU (0,346), giá (0,283), số đánh giá (0,251) và Achievements (0,239), đều ở mức yếu đến trung bình.
+Giá càng cao thì thời gian chơi càng dài (Hình 4.10): 92 phút ở nhóm miễn phí, 184 phút ở nhóm thấp, 259 phút ở nhóm trung bình và 470,5 phút ở nhóm cao. Steam Cloud có chênh lệch lớn nhất giữa trò chơi có và không có tính năng (+82 phút). Multi-player và Online PvP gần như không khác biệt (−6 và −3 phút). Thời gian chơi liên hệ cùng chiều với Peak CCU (0,346), giá (0,283), số đánh giá (0,251) và Achievements (0,239), đều ở mức yếu đến trung bình.
 
 Tổng hợp lại, đối với RQ3, thời gian chơi có liên hệ với thể loại và giá. Game nhập vai, chiến thuật và game giá cao được chơi lâu hơn.
 
@@ -478,7 +480,7 @@ Ghi chú: tỷ lệ tích cực chỉ tính cho trò chơi có từ 10 đánh gi
 
 Nguồn: notebook 02_eda.ipynb, mục 2.4.7.
 
-Trong các trò chơi trả phí, giá cao hơn đi kèm tỷ lệ có người chơi đồng thời cao hơn: 19,9%, 26,5% và 36,4%. Game miễn phí có 25,5%, cao hơn nhóm giá thấp và gần bằng nhóm trung bình, nên tỷ lệ này không tăng đều theo giá. Tỷ lệ trò chơi có từ 20.000 người sở hữu không tăng theo giá: game miễn phí cao nhất (50,3%), còn ba nhóm trả phí gần bằng nhau. Tỷ lệ tích cực cao nhất ở nhóm giá trung bình (80,0%), ba nhóm còn lại từ 75,7% đến 77,0%. Tương quan Spearman giữa giá và tỷ lệ tích cực chỉ là 0,12.
+Trong các trò chơi trả phí, giá cao hơn đi kèm tỷ lệ có người chơi đồng thời cao hơn (Hình 4.14): 19,9%, 26,5% và 36,4%. Game miễn phí có 25,5%, cao hơn nhóm giá thấp và gần bằng nhóm trung bình, nên tỷ lệ này không tăng đều theo giá. Tỷ lệ trò chơi có từ 20.000 người sở hữu không tăng theo giá: game miễn phí cao nhất (50,3%), còn ba nhóm trả phí gần bằng nhau. Tỷ lệ tích cực cao nhất ở nhóm giá trung bình (80,0%), ba nhóm còn lại từ 75,7% đến 77,0%. Tương quan Spearman giữa giá và tỷ lệ tích cực chỉ là 0,12.
 
 ### 4.7.3. Game miễn phí và game trả phí
 
@@ -486,7 +488,7 @@ Trong các trò chơi trả phí, giá cao hơn đi kèm tỷ lệ có người 
 
 Nguồn: notebook 02_eda.ipynb, mục 2.3.5.
 
-Trong phạm vi này có 33.536 trò chơi trả phí và 5.831 trò chơi miễn phí. Gần như tất cả đều đã có đánh giá (95,4% và 98,3%). Game miễn phí có tỷ lệ đạt từ 1.000 đánh giá cao hơn một chút (14,1% so với 11,2%), còn game trả phí được chơi lâu hơn (216 phút so với 138 phút).
+Trong phạm vi này có 33.536 trò chơi trả phí và 5.831 trò chơi miễn phí (Hình 4.15). Gần như tất cả đều đã có đánh giá (95,4% và 98,3%). Game miễn phí có tỷ lệ đạt từ 1.000 đánh giá cao hơn một chút (14,1% so với 11,2%), còn game trả phí được chơi lâu hơn (216 phút so với 138 phút).
 
 Đối với câu hỏi phụ, Peak CCU trung bình của game miễn phí (454,4) cao hơn nhiều so với game trả phí (51,1), trong khi trung vị của cả hai nhóm đều bằng 0. Mức trung bình cao đến từ một số ít trò chơi rất lớn: Counter-Strike 2, Dota 2 và PUBG: BATTLEGROUNDS chiếm 73,7% tổng Peak CCU của nhóm miễn phí. Khi bỏ 10 trò chơi lớn nhất, Peak CCU trung bình chỉ còn 49,5, gần bằng game trả phí. Tỷ lệ có người chơi đồng thời của hai nhóm cũng gần nhau (25,5% và 22,1%). Câu trả lời cho câu hỏi phụ là: một trò chơi miễn phí điển hình có lượng người chơi đồng thời gần bằng trò chơi trả phí; mức trung bình cao chỉ phản ánh vài trò chơi rất lớn.
 
@@ -496,7 +498,7 @@ Trong phạm vi này có 33.536 trò chơi trả phí và 5.831 trò chơi miễ
 
 Nguồn: notebook 02_eda.ipynb, mục 2.4.8.
 
-Ở cả sáu thể loại, tỷ lệ có người chơi đồng thời đều tăng từ nhóm giá thấp lên nhóm giá cao, chẳng hạn Strategy từ 27,7% lên 40,6%, Action từ 18,1% lên 27,6%. Game miễn phí đều cao hơn nhóm giá thấp. Tỷ lệ tích cực cao nhất ở nhóm giá trung bình, riêng Simulation thì nhóm miễn phí bằng nhóm trung bình (75,1%). Như vậy các xu hướng về giá không phải do khác biệt giữa các thể loại.
+Ở cả sáu thể loại (Hình 4.16), tỷ lệ có người chơi đồng thời đều tăng từ nhóm giá thấp lên nhóm giá cao, chẳng hạn Strategy từ 27,7% lên 40,6%, Action từ 18,1% lên 27,6%. Game miễn phí đều cao hơn nhóm giá thấp. Tỷ lệ tích cực cao nhất ở nhóm giá trung bình, riêng Simulation thì nhóm miễn phí bằng nhóm trung bình (75,1%). Như vậy các xu hướng về giá không phải do khác biệt giữa các thể loại.
 
 Tổng hợp lại, đối với RQ5, trong các trò chơi trả phí, giá cao hơn đi kèm tỷ lệ có người chơi đồng thời cao hơn, nhưng không đi kèm tỷ lệ có nhiều người sở hữu cao hơn. Game miễn phí không thua game trả phí về độ phổ biến. Giá liên hệ rất yếu với mức độ đánh giá. Trò chơi giá cao thường do các công ty lớn phát triển với ngân sách quảng bá lớn hơn, nên đây không phải tác động của giá. Ngoài ra, giá trong dữ liệu là giá hiện tại, không nhất thiết là giá tại thời điểm người chơi mua trò chơi.
 
@@ -522,7 +524,7 @@ Tỷ lệ trò chơi có Peak CCU > 0 là 19,40%, khoảng tin cậy 95% là 19,
 
 ## 5.3. Kiểm định giả thuyết
 
-Giả thuyết H0 của mỗi kiểm định là không có liên hệ hoặc không có khác biệt, mức ý nghĩa 0,05. Vì dữ liệu không theo phân phối chuẩn, nhóm dùng các kiểm định phi tham số. Có 11 kiểm định nên nhóm dùng hiệu chỉnh Bonferroni, ngưỡng còn 0,00455. Do cỡ mẫu rất lớn, nhóm báo cáo thêm cỡ ảnh hưởng.
+Giả thuyết H0 của mỗi kiểm định là không có liên hệ hoặc không có khác biệt, mức ý nghĩa 0,05. Vì dữ liệu không theo phân phối chuẩn, nhóm dùng các kiểm định phi tham số của thư viện SciPy [3]. Có 11 kiểm định nên nhóm dùng hiệu chỉnh Bonferroni, ngưỡng còn 0,00455. Do cỡ mẫu rất lớn, nhóm báo cáo thêm cỡ ảnh hưởng.
 
 Bảng 5.1. Kết quả kiểm định cho các câu hỏi nghiên cứu
 
@@ -586,7 +588,7 @@ Dữ liệu được chia 80% train (80.020 trò chơi) và 20% test (20.005 tr�
 
 ## 6.2. Hồi quy tuyến tính
 
-Nhóm xây dựng ba mô hình hồi quy để xem từng yếu tố liên hệ với kết quả như thế nào khi giữ các yếu tố khác không đổi. Mô hình A có mục tiêu là log1p(Total reviews), dùng cho RQ1, RQ4 và RQ5. Mô hình B có mục tiêu là Positive ratio, dùng cho RQ2, RQ4 và RQ5. Mô hình C có mục tiêu là log1p(Median playtime forever), dùng cho RQ3. Sai số chuẩn dùng HC3 vì phương sai sai số không đều giữa các trò chơi. Nhóm dùng Total reviews thay cho Peak CCU ở mô hình A vì Peak CCU có quá nhiều số 0.
+Nhóm xây dựng ba mô hình hồi quy để xem từng yếu tố liên hệ với kết quả như thế nào khi giữ các yếu tố khác không đổi. Mô hình A có mục tiêu là log1p(Total reviews), dùng cho RQ1, RQ4 và RQ5. Mô hình B có mục tiêu là Positive ratio, dùng cho RQ2, RQ4 và RQ5. Mô hình C có mục tiêu là log1p(Median playtime forever), dùng cho RQ3. Các mô hình được ước lượng bằng thư viện statsmodels [4], sai số chuẩn dùng HC3 vì phương sai sai số không đều giữa các trò chơi. Nhóm dùng Total reviews thay cho Peak CCU ở mô hình A vì Peak CCU có quá nhiều số 0.
 
 Bảng 6.2. Hệ số của ba mô hình hồi quy tuyến tính
 
@@ -613,7 +615,7 @@ Bảng 6.2. Hệ số của ba mô hình hồi quy tuyến tính
 
 Ghi chú: dấu * nghĩa là p < 0,05; bảng lược bỏ Single-player, Sports, Racing. Nguồn: notebook 04_modeling.ipynb.
 
-Mô hình B có mục tiêu là điểm phần trăm, nên hệ số 3,468 của has_achievements nghĩa là trò chơi có Achievements có tỷ lệ tích cực cao hơn khoảng 3,5 điểm khi các yếu tố khác giữ nguyên. Mô hình A và C có mục tiêu ở thang log, nên lấy e mũ hệ số: hệ số 0,787 nghĩa là số đánh giá gấp khoảng 2,2 lần.
+Mô hình B có mục tiêu là điểm phần trăm, nên hệ số 3,468 của has_achievements nghĩa là trò chơi có Achievements có tỷ lệ tích cực cao hơn khoảng 3,5 điểm khi các yếu tố khác giữ nguyên. Mô hình A và C có mục tiêu ở thang log, nên lấy e mũ hệ số: hệ số 0,787 nghĩa là số đánh giá gấp khoảng 2,2 lần. Hình 6.2 thể hiện các hệ số của mô hình B cùng khoảng tin cậy 95%.
 
 ![Hình 6.2. Hệ số và khoảng tin cậy 95% của mô hình B](figures/04_01.png)
 
@@ -631,7 +633,7 @@ Biến is_free phải đọc cùng log_price, vì game miễn phí có log_price
 
 ## 6.3. Đánh giá mô hình hồi quy
 
-Với mỗi mục tiêu, nhóm so sánh ba mô hình trên tập test: baseline luôn đoán trung bình, hồi quy tuyến tính và Random Forest (Bảng 6.3).
+Với mỗi mục tiêu, nhóm so sánh ba mô hình trên tập test: baseline luôn đoán trung bình, hồi quy tuyến tính và Random Forest, xây dựng bằng thư viện scikit-learn [5] (Bảng 6.3).
 
 Bảng 6.3. Kết quả các mô hình hồi quy
 
@@ -675,7 +677,7 @@ Nguồn: notebook 05_model_evaluation.ipynb, mục 5.4.
 
 Nguồn: notebook 05_model_evaluation.ipynb, mục 5.4.
 
-Baseline có accuracy cao nhất dù không phát hiện được trò chơi nào có Peak CCU > 0, đây là lý do không dùng accuracy một mình. Random Forest tốt nhất ở F1 và ROC-AUC. Mô hình phát hiện được 2.674 trong 3.880 trò chơi có Peak CCU > 0, nhưng cũng báo nhầm 3.779 trò chơi. Kiểm định chéo 5 phần cho F1 trung bình 0,521 với Random Forest và 0,491 với Logistic Regression, độ lệch chuẩn rất nhỏ, nên kết quả ổn định.
+Baseline có accuracy cao nhất dù không phát hiện được trò chơi nào có Peak CCU > 0, đây là lý do không dùng accuracy một mình. Random Forest tốt nhất ở F1 và ROC-AUC. Mô hình phát hiện được 2.674 trong 3.880 trò chơi có Peak CCU > 0, nhưng cũng báo nhầm 3.779 trò chơi (Hình 6.4). Kiểm định chéo 5 phần cho F1 trung bình 0,521 với Random Forest và 0,491 với Logistic Regression, độ lệch chuẩn rất nhỏ, nên kết quả ổn định.
 
 Thay đổi ngưỡng phân loại sẽ đổi giữa precision và recall. Ngưỡng 0,6 cho F1 cao nhất (0,524). Ngưỡng 0,3 có recall 0,904 nhưng precision chỉ 0,281, còn ngưỡng 0,8 có precision 0,774 nhưng recall còn 0,219.
 
@@ -796,11 +798,11 @@ Nếu tiếp tục, nhóm sẽ ưu tiên thu thập lại dữ liệu owners và
 
 [2] SteamSpy, “SteamSpy API.” [Trực tuyến]. Địa chỉ: https://steamspy.com/api.php. [Ngày truy cập: 05/11/2026].
 
-[3] F. Pedregosa et al., “Scikit-learn: Machine Learning in Python,” Journal of Machine Learning Research, vol. 12, pp. 2825–2830, 2011.
+[3] P. Virtanen et al., “SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python,” Nature Methods, vol. 17, pp. 261–272, 2020.
 
 [4] S. Seabold and J. Perktold, “Statsmodels: Econometric and Statistical Modeling with Python,” in Proc. 9th Python in Science Conference, 2010.
 
-[5] P. Virtanen et al., “SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python,” Nature Methods, vol. 17, pp. 261–272, 2020.
+[5] F. Pedregosa et al., “Scikit-learn: Machine Learning in Python,” Journal of Machine Learning Research, vol. 12, pp. 2825–2830, 2011.
 
 # PHỤ LỤC. ĐỐI CHIẾU NỘI DUNG MÔN HỌC
 

@@ -2,7 +2,7 @@
 
 ## Mục tiêu
 
-Tìm hiểu các đặc điểm của trò chơi trên Steam và mối liên hệ giữa những đặc điểm đó với **mức độ phổ biến** (số người sở hữu, số người chơi đồng thời, số lượt đánh giá và đề xuất) và **mức độ đánh giá tích cực** của người chơi.
+Tìm hiểu các đặc điểm của trò chơi trên Steam và mối liên hệ giữa những đặc điểm đó với **mức độ phổ biến** (số người sở hữu, số người chơi đồng thời, số lượt đánh giá và đề xuất), **mức độ đánh giá tích cực** của người chơi và **thời gian chơi**.
 
 ## Câu hỏi nghiên cứu
 
@@ -36,7 +36,7 @@ Cả 5 câu hỏi đều được phân tích: RQ1, RQ2, RQ5 ở notebook `02_ed
 5. **Thống kê suy luận** (`06_statistical_inference`): xác suất, khoảng tin cậy, kiểm định giả thuyết và phân tích kiểu A/B.
 6. **Big data, đạo đức và thiên lệch** (`07_big_data_ethics_bias`).
 
-**Sản phẩm:** notebook, báo cáo, dashboard và slide thuyết trình.
+**Sản phẩm:** notebook, báo cáo và slide thuyết trình.
 
 ## Tiêu chí thành công
 
@@ -58,4 +58,4 @@ Cả 5 câu hỏi đều được phân tích: RQ1, RQ2, RQ5 ở notebook `02_ed
 ## Vai trò
 
 - **Nhóm trưởng:** huytu059-blip
-- **Thành viên:** mtrieng138-del, huin23, (bổ sung thành viên thứ 4)
+- **Thành viên nhóm 3:** Nguyễn Thu Huyền, Lê Huy Tự, Nghiêm Huy Nam, Đỗ Phúc Trọng
