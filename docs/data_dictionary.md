@@ -24,7 +24,7 @@ steam_columns_dict = {
     },
     "Peak CCU": {
         "vietnamese_name": "Đỉnh điểm người chơi đồng thời",
-        "meaning": "Số lượng người chơi trực tuyến cao nhất cùng lúc trong lịch sử của game.",
+        "meaning": "Số người chơi cùng lúc cao nhất trong một ngày, không phải đỉnh trong lịch sử của game (xem ghi chú ở bảng bên dưới).",
         "data_type": "int64"
     },
     "Required age": {
@@ -219,8 +219,8 @@ Hai file trong `data/processed/` có cùng 21 cột. `games_reduced.csv` đượ
 | id | Mã game trên Steam | int64 | Đổi tên từ `AppID` ở notebook 00 |
 | Name | Tên game | str | Gộp khoảng trắng thừa; 1 tên thiếu được điền "Unknown" |
 | Release date | Ngày phát hành | datetime | Đổi từ chuỗi "Jul 29, 2016" sang ngày tháng |
-| Estimated owners | Khoảng số người sở hữu ước tính | str | Dạng "min - max"; "0 - 0" được giữ nguyên (game chưa có người dùng) |
-| Peak CCU | Số người chơi đồng thời cao nhất | int64 | |
+| Estimated owners | Khoảng số người sở hữu ước tính | str | Dạng "min - max"; "0 - 0" là thiếu dữ liệu, dòng được giữ trong file nhưng bị bỏ khi phân tích độ phổ biến |
+| Peak CCU | Số người chơi đồng thời cao nhất trong một ngày | int64 | SteamSpy định nghĩa cột này là đỉnh của ngày hôm trước, nên 0 nghĩa là không ghi nhận người chơi vào ngày đó, không phải game chưa từng có người chơi. Trang Kaggle chưa đọc được nên đây là suy ra từ nguồn SteamSpy |
 | Price | Giá bán hiện tại (USD) | float64 | |
 | Discount | Mức giảm giá (%) | int64 | Game giá 0 có giảm giá 1-99% được đặt về 0 |
 | DLC count | Số DLC | int64 | |
@@ -238,9 +238,26 @@ Hai file trong `data/processed/` có cùng 21 cột. `games_reduced.csv` đượ
 | Genres | Danh sách thể loại, cách nhau bởi dấu phẩy | str | Giá trị thiếu để trống |
 | Tags | Danh sách thẻ do người chơi gắn, cách nhau bởi dấu phẩy | str | Giá trị thiếu để trống (thiếu vì game chưa có đánh giá) |
 
-Các chỉ số tính thêm khi phân tích (notebook `02_eda`, không lưu trong file):
+Các chỉ số tính thêm khi phân tích (tính trong notebook `02_eda`, `02b_eda_rq3_rq4` và lưu trong `games_features.csv`):
 
 - **Owners_mid**: điểm giữa của khoảng `Estimated owners`.
 - **Total reviews** = Positive + Negative.
 - **Positive ratio** = Positive / Total reviews × 100, chỉ tính cho game có từ 10 đánh giá.
 - **Nhóm giá**: Miễn phí (0), Thấp (dưới 5 USD), Trung bình (5 đến dưới 15 USD), Cao (từ 15 USD).
+
+## Bộ dữ liệu cho mô hình
+
+`games_features.csv` được tạo ở notebook `03_ml_readiness`, gồm 100.025 game và 43 cột. File này đã bỏ nhóm owners = "0 - 0", năm 2026 và các game thiếu Genres hoặc Categories. Ngoài các cột giữ lại từ `games_cleaned.csv` và các chỉ số ở trên, file có thêm:
+
+| Cột | Ý nghĩa |
+|---|---|
+| Năm phát hành | Năm trong `Release date` |
+| Giai đoạn | Trước 2014, 2014-2017, 2018-2020, 2021-2023, 2024-2025 |
+| log_price, log_reviews, log_playtime, log_achievements | log1p của Price, Total reviews, Median playtime forever, Achievements |
+| is_free | 1 nếu Price = 0 |
+| has_achievements | 1 nếu game có Achievements |
+| has_ccu | Nhãn phân loại: 1 nếu Peak CCU > 0 |
+| n_genres | Số thể loại của game |
+| genre_... | 10 cờ 0/1 theo thể loại: Indie, Casual, Action, Adventure, Simulation, Strategy, RPG, Sports, Racing, Massively Multiplayer |
+| cat_... | 6 cờ 0/1 theo tính năng: Single-player, Multi-player, Co-op, Online PvP, Steam Cloud, Full controller support |
+| split | train hoặc test (80% và 20%) |
