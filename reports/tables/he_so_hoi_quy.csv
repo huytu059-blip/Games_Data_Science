@@ -1,0 +1,21 @@
+﻿,A: Số đánh giá,B: Tỷ lệ tích cực,C: Thời gian chơi
+log_price,0.2 *,1.418 *,0.345 *
+is_free,0.85 *,3.469 *,0.117 *
+has_achievements,0.787 *,3.468 *,0.349 *
+Năm phát hành,-0.335 *,1.012 *,-0.006 *
+genre_Indie,-0.166 *,0.32,-0.218 *
+genre_Casual,-0.445 *,1.203 *,-0.109 *
+genre_Action,-0.06 *,-2.898 *,-0.2 *
+genre_Adventure,0.311 *,-1.563 *,0.079 *
+genre_Simulation,0.476 *,-5.139 *,0.105 *
+genre_Strategy,0.128 *,-2.127 *,0.209 *
+genre_RPG,0.197 *,-1.691 *,0.291 *
+genre_Sports,-0.143 *,-1.251 *,0.035
+genre_Racing,0.006,-1.924 *,-0.222 *
+genre_Massively Multiplayer,0.443 *,-6.877 *,0.252 *
+cat_Single-player,0.018,1.973 *,-0.119 *
+cat_Multi-player,0.03,-0.177,-0.031
+cat_Co-op,0.564 *,-0.627,0.128 *
+cat_Online PvP,0.689 *,-0.639,0.121 *
+cat_Steam Cloud,0.842 *,4.341 *,0.325 *
+cat_Full controller support,0.499 *,3.579 *,-0.027
