@@ -1,0 +1,10 @@
+﻿,Mục tiêu,Mô hình,R2 train,R2 test,MAE test
+0,A: Số đánh giá,Baseline,0.0,-0.0,1.926
+1,A: Số đánh giá,Hồi quy tuyến tính,0.357,0.365,1.511
+2,A: Số đánh giá,Random Forest,0.469,0.432,1.406
+3,B: Tỷ lệ tích cực,Baseline,0.0,-0.0,14.229
+4,B: Tỷ lệ tích cực,Hồi quy tuyến tính,0.132,0.134,13.046
+5,B: Tỷ lệ tích cực,Random Forest,0.257,0.192,12.56
+6,C: Thời gian chơi,Baseline,0.0,-0.0,1.101
+7,C: Thời gian chơi,Hồi quy tuyến tính,0.122,0.138,1.023
+8,C: Thời gian chơi,Random Forest,0.289,0.166,0.992

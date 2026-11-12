@@ -1,0 +1,12 @@
+﻿,RQ,Nội dung,Kiểm định,Số game,p,Cỡ ảnh hưởng,Bác bỏ H0
+0,RQ1,Owners và Peak CCU,Spearman,100025,"< 0,001",rho = 0.469,True
+1,RQ1,MMO và có người chơi đồng thời,Chi bình phương,100025,"< 0,001",V = 0.05,True
+2,RQ2,Metacritic và tỷ lệ tích cực,Spearman,4137,"< 0,001",rho = 0.583,True
+3,RQ2,Tỷ lệ tích cực: MMO và game khác,Mann-Whitney U,56166,"< 0,001",r = -0.42,True
+4,RQ3,Thời gian chơi theo nhóm giá,Kruskal-Wallis,25912,"< 0,001",eta2 = 0.08,True
+5,RQ3,Thời gian chơi: RPG và game khác,Mann-Whitney U,25912,"< 0,001",r = 0.206,True
+6,RQ4,Tỷ lệ tích cực theo giai đoạn,Kruskal-Wallis,56166,"< 0,001",eta2 = 0.072,True
+7,RQ4,Giai đoạn và có người chơi đồng thời,Chi bình phương,100025,"< 0,001",V = 0.175,True
+8,RQ5,Nhóm giá và có người chơi (đến 2020),Chi bình phương,38886,"< 0,001",V = 0.095,True
+9,RQ5,Peak CCU: miễn phí và trả phí (đến 2020),Mann-Whitney U,38886,"< 0,001",r = 0.035,True
+10,RQ5,Giá và tỷ lệ tích cực,Spearman,56166,"< 0,001",rho = 0.12,True

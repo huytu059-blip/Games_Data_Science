@@ -11,9 +11,11 @@ def drop_duplicates(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def fill_missing_numeric(df: pd.DataFrame, columns=None, value=0):
-    """Fill missing numeric values for selected columns."""
+    """Fill missing numeric values for selected columns and keep the other columns."""
+    df = df.copy()
     cols = df.columns if columns is None else columns
-    return df[cols].fillna(value)
+    df[cols] = df[cols].fillna(value)
+    return df
 
 
 def detect_invalid_ranges(df: pd.DataFrame) -> pd.DataFrame:

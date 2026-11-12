@@ -6,9 +6,24 @@ reports/*.csv
 # File tạm của Word/Excel khi đang mở
 ~$*
 
+<<<<<<< HEAD
 # Dữ liệu lớn (GitHub không nhận file > 100 MB)
 data/processed/games_cleaned.csv
+=======
+# Dữ liệu tạo lại được bằng notebook 01 và 03
+data/processed/games_cleaned.csv
+data/processed/games_features.csv
+
+# Mô hình đã huấn luyện (chạy notebook 04 để tạo lại)
+models/*.joblib
+>>>>>>> ef668bcffbfa37c916799aad799b1c884027c2ad
 
 # Python
 __pycache__/
 .ipynb_checkpoints/
+<<<<<<< HEAD
+=======
+.pytest_cache/
+.venv/
+venv/
+>>>>>>> ef668bcffbfa37c916799aad799b1c884027c2ad

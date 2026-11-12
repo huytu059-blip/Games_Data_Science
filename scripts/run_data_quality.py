@@ -1,9 +1,13 @@
-"""Run basic data quality checks for the project."""
+"""Run only the data reduction and data quality notebooks."""
+
+import sys
+
+from run_pipeline import run_notebooks
 
 
 def main():
-    print("Data quality checks are configured here.")
+    return run_notebooks(["00_reduce_raw", "01_data_quality"])
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

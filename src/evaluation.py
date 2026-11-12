@@ -9,5 +9,5 @@ def evaluate_model(y_true, y_pred):
     """Return a simple evaluation summary for a classification task."""
     return {
         "accuracy": accuracy_score(y_true, y_pred),
-        "report": classification_report(y_true, y_pred, output_dict=True),
+        "report": classification_report(y_true, y_pred, output_dict=True, zero_division=0),
     }

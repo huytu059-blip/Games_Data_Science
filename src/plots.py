@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import matplotlib.pyplot as plt
+import pandas as pd
 import seaborn as sns
 
 
@@ -14,13 +15,8 @@ def plot_histogram(series, title: str = "Distribution"):
     return fig, ax
 
 
-#34
 def plot_correlation_heatmap(correlation_matrix):
-    """Ve bieu do nhiet tuong quan giua cac bien so."""
-
-    import matplotlib.pyplot as plt
-    import seaborn as sns
-
+    """Plot a correlation heatmap."""
     plt.figure(figsize=(10, 8))
 
     sns.heatmap(
@@ -38,12 +34,8 @@ def plot_correlation_heatmap(correlation_matrix):
     plt.show()
 
 
-#35
 def plot_top_peak_ccu(df, top_n=10):
-    """Ve bieu do cac game co Peak CCU cao nhat."""
-    import matplotlib.pyplot as plt
-    import pandas as pd
-
+    """Plot the games with the highest Peak CCU."""
     data = df[["Name", "Peak CCU"]].copy()
     data["Peak CCU"] = pd.to_numeric(data["Peak CCU"], errors="coerce")
     data = data.dropna(subset=["Name", "Peak CCU"])
@@ -60,10 +52,7 @@ def plot_top_peak_ccu(df, top_n=10):
 
 
 def plot_positive_negative_reviews(df):
-    """So sanh so luot danh gia tich cuc va tieu cuc."""
-    import matplotlib.pyplot as plt
-    import pandas as pd
-
+    """Compare positive and negative review counts."""
     data = df[["Positive", "Negative"]].copy()
 
     for column in ["Positive", "Negative"]:
@@ -72,7 +61,7 @@ def plot_positive_negative_reviews(df):
     data = data.dropna()
     data = data[(data["Positive"] >= 0) & (data["Negative"] >= 0)]
 
-    # Lay mau toi da 5000 dong de bieu do de quan sat hon.
+    # Sample at most 5000 rows so the chart stays readable.
     if len(data) > 5000:
         data = data.sample(n=5000, random_state=42)
 
