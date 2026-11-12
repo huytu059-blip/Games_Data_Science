@@ -14,6 +14,7 @@ Thư mục này chứa báo cáo, biểu đồ và bảng kết quả của dự
 | `05_model_evaluation_report.md` | Đánh giá mô hình |
 | `06_statistical_inference_report.md` | Xác suất, kiểm định, phân tích kiểu A/B |
 | `07_big_data_ethics_bias_report.md` | Big data, đạo đức, thiên lệch |
+| `cleaning_log.csv` | Nhật ký từng thay đổi khi làm sạch dữ liệu |
 
 Bản Word (`Bao_cao_cuoi_ky_GameStream.docx`, `Bao_cao_giua_ky_GameStream.docx`) không đưa lên GitHub. Số liệu trong báo cáo cuối kỳ thay thế số liệu tương ứng ở báo cáo giữa kỳ (xem mục 1.6).
 

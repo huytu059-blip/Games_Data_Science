@@ -1,0 +1,21 @@
+﻿Bước,Vấn đề,Nguyên nhân,Cách xử lý,Số dòng
+B1,Tên game có khoảng trắng thừa,Nhập tay hoặc ghép từ nhiều nguồn,Gộp khoảng trắng thừa,304
+B1,Categories có nhãn bị lặp,Ghép dữ liệu từ nhiều nguồn,"Bỏ nhãn lặp, giữ thứ tự",96
+B1,Release date là chuỗi,Dữ liệu xuất ra dạng văn bản,Đổi sang kiểu ngày tháng,125855
+B2,Name thiếu,"Bản ghi rỗng, mọi số liệu bằng 0","Điền 'Unknown', giữ dòng",1
+B2,Genres thiếu,Chưa có thông tin; Tags thiếu vì game chưa có đánh giá,"Để trống, không đoán",8423
+B2,Categories thiếu,Chưa có thông tin; Tags thiếu vì game chưa có đánh giá,"Để trống, không đoán",8966
+B2,Tags thiếu,Chưa có thông tin; Tags thiếu vì game chưa có đánh giá,"Để trống, không đoán",42502
+B2,Metacritic score = 0,Số 0 thay cho 'chưa có điểm',Đổi thành trống (NaN),121597
+B2,User score = 0,Số 0 thay cho 'chưa có điểm',Đổi thành trống (NaN),125815
+B2,Estimated owners = '0 - 0',Thiếu dữ liệu: nhóm này có cả game lớn; chỉ số người chơi và đánh giá bằng 0,"Giữ dòng, bỏ khi phân tích độ phổ biến",24579
+B3,"Dòng giống hệt nhau, chỉ khác id",Cùng một game được đăng nhiều lần,"Xóa dòng thừa, giữ id nhỏ nhất",8
+B3,Cùng tên và ngày phát hành nhưng số liệu khác,Các phiên bản khác nhau của một sản phẩm,Giữ lại,169
+B4,Giá = 0 nhưng có giảm giá 1-99%,Game chuyển sang miễn phí nhưng còn sót mức giảm giá,Đặt Discount = 0,35
+B4,Game chưa phát hành,Ngày phát hành sau 2026-11-03,Xóa dòng,1
+B4,Số đánh giá hoặc Peak CCU lớn hơn số người sở hữu tối đa,Số người sở hữu chỉ là ước tính,"Giữ nguyên, ghi chú khi phân tích",13
+B4,Thời gian chơi 2 tuần lớn hơn tổng thời gian chơi,Hai chỉ số tính trên hai nhóm người chơi khác nhau,Giữ nguyên,855
+B5,Outlier ở Price,"Phân phối lệch mạnh, phần lớn là giá trị thật","Giữ nguyên, không xóa",9256
+B5,Outlier ở Peak CCU,"Phân phối lệch mạnh, phần lớn là giá trị thật","Giữ nguyên, không xóa",19680
+B5,Outlier ở DLC count,"Phân phối lệch mạnh, phần lớn là giá trị thật","Giữ nguyên, không xóa",18032
+B5,Outlier ở Average playtime forever,"Phân phối lệch mạnh, phần lớn là giá trị thật","Giữ nguyên, không xóa",26173

@@ -43,3 +43,11 @@ Game cũ có nhiều thời gian tích lũy hơn và dữ liệu các năm gần
 | Cao | 36,4 | 35,1 | 75,7 |
 
 Trong game trả phí, giá cao hơn đi kèm tỷ lệ có Peak CCU > 0 cao hơn nhưng không đi kèm nhiều người sở hữu hơn. Game miễn phí không thua game trả phí về độ phổ biến. Giá liên hệ rất yếu với đánh giá (Spearman 0,12).
+
+## Insights xuyên suốt
+
+- Mức độ phổ biến không đồng nghĩa với mức độ hài lòng: Massively Multiplayer có tỷ lệ Peak CCU > 0 cao nhất (33,6%) nhưng tỷ lệ tích cực trung vị thấp hơn mặt bằng chung (66,7% so với 81,2%).
+- Trong nhóm game trả phí, tỷ lệ có Peak CCU > 0 tăng theo nhóm giá, nhưng tỷ lệ có nhiều owners không tăng tương ứng; giá và tỷ lệ tích cực chỉ có Spearman 0,12. Đây là mối liên hệ, không phải tác động của giá.
+- Tỷ lệ owners = “0 - 0” cao hơn nhiều ở game miễn phí và game mới. Coi nhóm này là giá trị 0 thật đã làm sai lệch so sánh giá ở báo cáo giữa kỳ.
+
+Các kết quả theo nhóm, kiểm định thống kê và giới hạn diễn giải được tổng hợp ở mục 4.8 của [`final_report.md`](final_report.md).

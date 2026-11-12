@@ -116,13 +116,27 @@ Bảng 2.2. Các cột được giữ lại và loại bỏ
 | Thời gian chơi | Average và Median playtime, toàn bộ và hai tuần | Giữ: RQ3 |
 | Đường dẫn, email, ảnh, video | Website, Support url, Support email, Header image, Metacritic url, Screenshots, Movies | Bỏ: không có thông tin định lượng |
 | Văn bản dài hoặc gần như trống | About the game, Reviews (90,3% trống), Notes (81,5%), Score rank (99,97%) | Bỏ |
-| Không phục vụ câu hỏi nghiên cứu | Required age, ngôn ngữ, Windows, Mac, Linux, Developers (72.859 giá trị), Publishers (64.607 giá trị) | Bỏ |
+| Không phục vụ câu hỏi nghiên cứu hiện tại | Required age, `Supported languages`, `Full audio languages`, Windows, Mac, Linux, Developers (72.859 giá trị), Publishers (64.607 giá trị) | Bỏ; chưa phân tích bản địa hóa |
 
 Nguồn: notebook 00_reduce_raw.ipynb, mục 2 và 3.
 
+Ý nghĩa, kiểu dữ liệu và quyết định với từng cột được liệt kê trong [từ điển dữ liệu](../docs/data_dictionary.md).
+
+Hai cột ngôn ngữ bị bỏ có mức thiếu khác nhau: `Supported languages` thiếu 6,7%, còn `Full audio languages` thiếu 59,3%. Việc bỏ chúng không làm thay đổi các phép tính cho RQ1–RQ5, nhưng dự án không thể đánh giá độ phủ bản địa hóa hoặc mối liên hệ của ngôn ngữ với mức độ phổ biến, đánh giá và thời gian chơi. Nếu mở rộng phạm vi, cần giữ cả hai cột và phân biệt “không hỗ trợ” với “không có dữ liệu”.
+
 ## 2.4. Kết quả rút gọn dữ liệu
 
-Tệp games_reduced.csv gồm 125.855 dòng và 21 cột. Dung lượng bộ nhớ giảm từ 576,87 MB xuống 75,43 MB, tương ứng mức giảm 86,92%. Bước rút gọn chỉ loại bỏ cột, toàn bộ các dòng và giá trị của tệp gốc được giữ nguyên. Nhờ vậy, mọi thay đổi đối với giá trị dữ liệu đều được thực hiện và ghi nhận tập trung ở bước làm sạch.
+Bảng 2.3. So sánh trước và sau bước rút gọn dữ liệu
+
+| Chỉ tiêu | Tệp gốc sau khi sửa header | Tệp rút gọn | Thay đổi |
+|---|---:|---:|---:|
+| Số dòng | 125.855 | 125.855 | Giữ nguyên |
+| Số cột | 40 | 21 | Bỏ 19 cột (47,5%) |
+| Dung lượng bộ nhớ DataFrame | 576,87 MB | 75,43 MB | Giảm 86,92% |
+
+Nguồn: notebook 00_reduce_raw.ipynb, mục 2.
+
+Bước rút gọn chỉ chọn cột, toàn bộ dòng và giá trị được giữ nguyên. Mọi thay đổi giá trị được thực hiện và ghi nhận tập trung ở bước làm sạch.
 
 # CHƯƠNG 3. KIỂM TRA CHẤT LƯỢNG VÀ LÀM SẠCH DỮ LIỆU
 
@@ -203,7 +217,7 @@ Bảng 3.2. Các bước làm sạch dữ liệu
 | Genres, Categories, Tags thiếu | Để trống, không suy đoán | 8.423; 8.966; 42.502 |
 | Metacritic score bằng 0 | Đổi thành giá trị trống (NaN) | 121.597 |
 | User score bằng 0 | Đổi thành giá trị trống (NaN) | 125.815 |
-| Estimated owners bằng "0 - 0" | Giữ dòng trong tệp, bỏ khi phân tích độ phổ biến | 24.572 |
+| Estimated owners bằng "0 - 0" | Giữ dòng trong tệp, bỏ khi phân tích độ phổ biến | 24.579 trước làm sạch |
 | Dòng giống hệt nhau, chỉ khác id | Xóa dòng thừa, giữ id nhỏ nhất | 8 |
 | Giá bằng 0 nhưng có giảm giá 1–99% | Đặt Discount bằng 0 | 35 |
 | Trò chơi chưa phát hành | Xóa dòng | 1 |
@@ -231,9 +245,12 @@ Bảng 3.3. So sánh dữ liệu trước và sau làm sạch
 | Trò chơi chưa phát hành | 1 | 0 |
 | Metacritic score bằng 0 | 121.597 | 0 |
 | User score bằng 0 | 125.815 | 0 |
+| Estimated owners = "0 - 0" | 24.579 | 24.572 |
 | Kiểu dữ liệu của Release date | Chuỗi | Ngày tháng |
 
 Nguồn: notebook 01_data_quality.ipynb, mục B8.
+
+Nhật ký chi tiết theo từng vấn đề, nguyên nhân, hành động và số dòng nằm ở [`reports/cleaning_log.csv`](cleaning_log.csv). Số `Estimated owners = "0 - 0"` trong nhật ký ghi nhận dữ liệu đầu vào của bước làm sạch; Bảng 3.3 cho thấy số còn lại sau khi loại dòng trùng và trò chơi chưa phát hành.
 
 ## 3.5. Các giả định trong quá trình làm sạch
 
@@ -501,6 +518,18 @@ Nguồn: notebook 02_eda.ipynb, mục 2.4.8.
 Ở cả sáu thể loại (Hình 4.16), tỷ lệ có người chơi đồng thời đều tăng từ nhóm giá thấp lên nhóm giá cao, chẳng hạn Strategy từ 27,7% lên 40,6%, Action từ 18,1% lên 27,6%. Game miễn phí đều cao hơn nhóm giá thấp. Tỷ lệ tích cực cao nhất ở nhóm giá trung bình, riêng Simulation thì nhóm miễn phí bằng nhóm trung bình (75,1%). Như vậy các xu hướng về giá không phải do khác biệt giữa các thể loại.
 
 Tổng hợp lại, đối với RQ5, trong các trò chơi trả phí, giá cao hơn đi kèm tỷ lệ có người chơi đồng thời cao hơn, nhưng không đi kèm tỷ lệ có nhiều người sở hữu cao hơn. Game miễn phí không thua game trả phí về độ phổ biến. Giá liên hệ rất yếu với mức độ đánh giá. Trò chơi giá cao thường do các công ty lớn phát triển với ngân sách quảng bá lớn hơn, nên đây không phải tác động của giá. Ngoài ra, giá trong dữ liệu là giá hiện tại, không nhất thiết là giá tại thời điểm người chơi mua trò chơi.
+
+## 4.8. Insights tổng hợp
+
+| Insight | Bằng chứng trong dữ liệu | Cách diễn giải |
+|---|---|---|
+| Phổ biến và được đánh giá tốt là hai khía cạnh khác nhau. | Massively Multiplayer có tỷ lệ game với Peak CCU > 0 cao nhất (33,6%) nhưng tỷ lệ tích cực trung vị chỉ 66,7%, thấp hơn trung vị chung 81,2%. | Không nên dùng lượt chơi hoặc độ phổ biến làm đại diện cho mức hài lòng. |
+| Giá liên hệ với khả năng có người chơi hơn là số chủ sở hữu hay đánh giá. | Trong game trả phí đến năm 2020, tỷ lệ Peak CCU > 0 tăng từ 19,9% ở nhóm giá thấp lên 36,4% ở nhóm giá cao; tỷ lệ có từ 20.000 owners không tăng tương ứng, còn Spearman giữa giá và tỷ lệ tích cực là 0,12. | Quan hệ này không chứng minh tăng giá sẽ làm game phổ biến hơn; thể loại, quy mô nhà phát hành và quảng bá cũng có thể góp phần. |
+| So sánh theo năm bị ảnh hưởng bởi thời gian tích lũy và độ phủ đánh giá. | Trung vị số đánh giá giảm từ 810 ở game trước 2014 xuống 2 ở game 2024–2025; tỷ lệ Peak CCU > 0 cũng giảm từ 62,3% xuống 17,7%. | Không thể đọc xu hướng theo năm như thay đổi thuần túy về chất lượng; cần theo dõi cùng khoảng thời gian sau phát hành. |
+| Thiếu owners tập trung ở game miễn phí và game mới, làm sai kết luận nếu coi là số 0 thật. | Nhóm `0 - 0` chiếm 62,7% game miễn phí và 7,9% game trả phí; tỷ lệ này tăng lên 41,2% ở game phát hành năm 2025. | Loại nhóm thiếu khỏi phân tích độ phổ biến và giới hạn so sánh theo giá đến năm 2020 là cần thiết. |
+| Mô hình dự đoán hoạt động khác nhau giữa các nhóm. | Recall của Random Forest là 0,615 với game Indie và 0,806 với game không có Indie. | Không nên dùng mô hình để sàng lọc từng game nếu chưa xử lý chênh lệch hiệu quả theo nhóm. |
+
+Các insight này là mối liên hệ trong dữ liệu quan sát, không phải quan hệ nhân quả.
 
 # CHƯƠNG 5. THỐNG KÊ SUY LUẬN
 
@@ -785,12 +814,25 @@ Bài học lớn nhất của dự án là phải kiểm tra lại các giả đ
 - Dữ liệu owners bị thiếu ở 24.572 trò chơi, tập trung ở game miễn phí và game mới. So sánh theo giá vì vậy chỉ dùng trò chơi đến năm 2020, và kết luận về game miễn phí không áp dụng cho những năm gần đây.
 - Một số trò chơi lớn ngoài nhóm "0 - 0" cũng có số liệu không hợp lý, ví dụ Portal 2, và nhóm chưa có cách tách hết các trường hợp này.
 - User score gần như trống, điểm Metacritic chỉ có ở khoảng 4.000 trò chơi, chủ yếu là trò chơi lớn.
+- Hai cột ngôn ngữ đã bị loại ở bước rút gọn; dự án hiện không đánh giá được ảnh hưởng của hỗ trợ ngôn ngữ hoặc lồng tiếng.
 - Giá trong dữ liệu là giá hiện tại. Bộ dữ liệu không ghi thời điểm thu thập và định nghĩa Peak CCU được suy ra từ SteamSpy.
 - Mô hình không có thông tin về chất lượng và ngân sách quảng bá, nên khả năng giải thích còn thấp.
 
 ## 8.4. Hướng phát triển
 
-Nếu tiếp tục, nhóm sẽ ưu tiên thu thập lại dữ liệu owners và Peak CCU cho các trò chơi bị thiếu, ghi lại ngày thu thập và phiên bản dữ liệu, và theo dõi Peak CCU trong nhiều ngày thay vì một ngày. Nhóm cũng có thể bổ sung dữ liệu về nhà phát hành để tính đến ngân sách của trò chơi, và dùng mô hình phù hợp hơn với biến có nhiều số 0 hoặc biến bị chặn.
+Nếu tiếp tục, nhóm sẽ ưu tiên các cột/dữ liệu ở Bảng 8.1.
+
+Bảng 8.1. Cột và dữ liệu đang xem xét bổ sung
+
+| Cột/dữ liệu đang xem xét | Câu hỏi liên quan | Lý do bổ sung | Tác động dự kiến và lưu ý |
+|---|---|---|---|
+| `Supported languages`, `Full audio languages` | RQ1–RQ3 mở rộng | Hai cột hiện đã bị bỏ; cho phép mô tả khả năng tiếp cận theo ngôn ngữ. | Kiểm tra thiếu dữ liệu và chuẩn hóa danh sách ngôn ngữ; không gộp “không hỗ trợ” với “không rõ”. |
+| `Developers`, `Publishers` | RQ1, RQ2, RQ5 | Có thể phân tích khác biệt giữa nhà phát triển độc lập và nhà phát hành lớn; bổ sung biến đại diện quy mô nguồn lực. | Tên tổ chức có nhiều biến thể; cần chuẩn hóa và không suy luận ngân sách trực tiếp nếu thiếu dữ liệu tài chính. |
+| Owners và Peak CCU theo ngày, kèm ngày thu thập | RQ1, RQ4, RQ5 | Khắc phục thiếu owners, đặc biệt ở game miễn phí/game mới, và hạn chế của Peak CCU một ngày. | Cho phép so sánh cùng cửa sổ thời gian sau phát hành; cần lưu lịch sử thay vì chỉ ghi giá trị mới nhất. |
+| Giá và mức giảm giá theo thời điểm | RQ5 | Giá hiện tại không đại diện cho giá tại thời điểm mua. | Tách ảnh hưởng của giá niêm yết và khuyến mãi; cần dữ liệu lịch sử. |
+| Ngày phát hành và phiên bản dữ liệu | Tất cả | Tái lập kết quả và đặt các game vào cohort có cùng thời gian quan sát. | Ghi timestamp và nguồn cho mỗi lần thu thập. |
+
+Sau khi bổ sung dữ liệu, nhóm có thể dùng mô hình phù hợp hơn với biến có nhiều số 0 hoặc bị chặn.
 
 # TÀI LIỆU THAM KHẢO
 

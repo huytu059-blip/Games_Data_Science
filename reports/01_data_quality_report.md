@@ -8,6 +8,18 @@ Notebook: `00_reduce_raw`, `01_data_quality`. Chi tiết ở chương 2 và 3 c�
 - Sau khi rút gọn còn 21 cột, bộ nhớ giảm từ 576,87 MB xuống 75,43 MB (giảm 86,92%).
 - Sau khi làm sạch còn 125.846 trò chơi. Chỉ 9 dòng bị xóa: 8 dòng trùng và 1 trò chơi chưa phát hành.
 
+| Chỉ tiêu | Trước làm sạch | Sau làm sạch |
+|---|---:|---:|
+| Số dòng | 125.855 | 125.846 |
+| Số cột | 21 | 21 |
+| Dòng trùng chỉ khác id | 8 | 0 |
+| Giá = 0 nhưng Discount từ 1–99% | 35 | 0 |
+| User score = 0 | 125.815 | 0 |
+| Metacritic score = 0 | 121.597 | 0 |
+| Tổng ô trống (NaN) | 59.892 | 307.276 |
+
+Tổng ô trống tăng do số 0 biểu thị “chưa có điểm” được chuyển thành NaN. Chi tiết từng hành động nằm trong [`cleaning_log.csv`](cleaning_log.csv); so sánh đầy đủ hơn có trong Bảng 3.3 của báo cáo cuối kỳ.
+
 ## Vấn đề chính
 
 | Vấn đề | Số dòng | Xử lý |
@@ -15,7 +27,7 @@ Notebook: `00_reduce_raw`, `01_data_quality`. Chi tiết ở chương 2 và 3 c�
 | User score = 0 | 125.815 | Đổi thành NaN |
 | Metacritic score = 0 | 121.597 | Đổi thành NaN |
 | Tags thiếu | 42.502 | Để trống |
-| Estimated owners = "0 - 0" | 24.572 | Giữ dòng, bỏ khi phân tích độ phổ biến |
+| Estimated owners = "0 - 0" | 24.572 sau làm sạch | Giữ dòng, bỏ khi phân tích độ phổ biến |
 | Genres, Categories thiếu | 8.423 và 8.966 | Để trống |
 | Giá 0 nhưng giảm giá 1-99% | 35 | Đặt Discount = 0 |
 

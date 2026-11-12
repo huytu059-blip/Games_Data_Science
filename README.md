@@ -10,36 +10,10 @@ Dự án GameStream dùng Python và Jupyter để tìm hiểu những đặc đ
 - RQ4: Mức độ phổ biến và đánh giá thay đổi như thế nào theo thời gian phát hành?
 - RQ5: Giá bán có mối liên hệ như thế nào với mức độ phổ biến và mức độ đánh giá?
 
-<<<<<<< HEAD
-## Data
-
-- Source: [Steam Games Dataset on Kaggle](https://www.kaggle.com/datasets/fronkongames/steam-games-dataset) (`games.csv`, about 400 MB, 125,855 games).
-- The `data/raw/games.csv` file in this repository is only an **8-row sample**, because GitHub rejects files over 100 MB. Running `00_reduce_raw` on it gives wrong results.
-- To run `00_reduce_raw`, download the full `games.csv` from Kaggle and place it at `data/raw/games.csv`. To stop Git from showing it as modified, run `git update-index --skip-worktree data/raw/games.csv`.
-- `data/processed/games_reduced.csv` (full data, 21 columns) is committed, so `01_data_quality` and later notebooks can run without the raw file.
-- `data/processed/games_cleaned.csv` is not committed; run `01_data_quality` to create it.
-
-## Quick start
-=======
 Kết quả nằm trong `reports/final_report.md`. Phạm vi dự án xem ở `docs/project_charter.md`.
->>>>>>> ef668bcffbfa37c916799aad799b1c884027c2ad
 
 ## Cấu trúc thư mục
 
-<<<<<<< HEAD
-The reduction notebook writes `data/processed/games_reduced.csv`; running it again replaces that processed output.
-
-## Data flow rules
-
-Run the notebooks in order: `00_reduce_raw` → `01_data_quality` → `02_eda` → `04_modeling`.
-
-- Only `00_reduce_raw` reads the raw file: it checks the raw structure, explains why columns are dropped, and writes `data/raw/games.csv` → `data/processed/games_reduced.csv` (21 columns kept for the research questions, all rows kept).
-- `01_data_quality` audits and cleans `games_reduced.csv`, then writes `data/processed/games_cleaned.csv` plus `reports/games_data_quality_audit.xlsx` and `reports/cleaning_log.csv`.
-- All analysis notebooks after that (`02_eda`, `04_modeling`, ...) read only `games_cleaned.csv`. No notebook other than `00_reduce_raw` reads `games.csv`.
-- No notebook overwrites `data/raw/games.csv`.
-- The raw header `DiscountDLC count` is two columns (`Discount`, `DLC count`) merged into one; always split it when reading the raw file, otherwise every column from there on is shifted by one.
-- `notebooks/archive/` holds old versions and is not part of the pipeline.
-=======
 - `data/raw/`: dữ liệu gốc, không sửa file `games.csv`.
 - `data/processed/`: dữ liệu đã rút gọn và đã xử lý.
 - `notebooks/`: các notebook phân tích theo thứ tự. `notebooks/archive/` chứa các bản cũ.
@@ -47,6 +21,7 @@ Run the notebooks in order: `00_reduce_raw` → `01_data_quality` → `02_eda` �
 - `scripts/`: script chạy các notebook theo thứ tự.
 - `tests/`: unit test cho `src/` và danh sách notebook.
 - `docs/`: từ điển dữ liệu và tài liệu dự án.
+- [Từ điển dữ liệu](docs/data_dictionary.md): ý nghĩa, kiểu dữ liệu và quyết định giữ/bỏ của từng cột.
 - `reports/`: báo cáo, biểu đồ và bảng kết quả.
 - `models/`: mô hình đã huấn luyện, do `04_modeling` tạo ra và không đưa lên GitHub.
 
@@ -73,10 +48,10 @@ Chạy các notebook theo thứ tự: `00_reduce_raw` → `01_data_quality` → 
 
 - Chỉ `00_reduce_raw` đọc file gốc. Notebook này kiểm tra cấu trúc file gốc, giải thích lý do bỏ cột, rồi tạo `data/processed/games_reduced.csv` từ `data/raw/games.csv` (giữ 21 cột phục vụ câu hỏi nghiên cứu và giữ toàn bộ dòng).
 - `01_data_quality` kiểm tra và làm sạch `games_reduced.csv`, sau đó ghi ra `data/processed/games_cleaned.csv`, `reports/games_data_quality_audit.xlsx` và `reports/cleaning_log.csv`.
+- `reports/cleaning_log.csv` được giữ trong repo để xem lại từng thay đổi; bảng so sánh trước/sau nằm trong notebook `01_data_quality` (B8) và báo cáo cuối kỳ (Bảng 3.3).
 - `02_eda` và `02b_eda_rq3_rq4` đọc `games_cleaned.csv`. `03_ml_readiness` cũng đọc file này và ghi ra `data/processed/games_features.csv`, trong đó cột `split` đánh dấu tập train và test.
 - Phần sau của `04_modeling` và các notebook `05`, `06`, `07` đọc `games_features.csv`. `04_modeling` lưu mô hình vào `models/mo_hinh.joblib`, `05` và `07` sẽ nạp file này. Ngoài `00_reduce_raw`, không notebook nào đọc `games.csv`.
 - Các dòng có `Estimated owners` = "0 - 0" vẫn nằm trong `games_cleaned.csv`, nhưng được xem là thiếu dữ liệu và bị bỏ khỏi mọi phân tích độ phổ biến và mô hình, vì nhóm này có cả những game rất lớn như Call of Duty: Warzone.
 - Không notebook nào ghi đè `data/raw/games.csv`.
 - Tên cột `DiscountDLC count` trong file gốc thực chất là hai cột `Discount` và `DLC count` bị dính liền. Khi đọc file gốc luôn phải tách ra, nếu không mọi cột từ đó trở đi sẽ lệch một cột.
 - `notebooks/archive/` chứa các bản cũ và không thuộc quy trình chạy.
->>>>>>> ef668bcffbfa37c916799aad799b1c884027c2ad
